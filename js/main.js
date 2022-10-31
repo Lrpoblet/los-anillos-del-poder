@@ -47,19 +47,45 @@ function getRandomOpponent() {
 
 function battle() {
   const optionUser = parseInt(select.value);
+  let gamer = 1;
+  let computer = 1;
 
   if (optionUser > force) {
     result.innerHTML = 'Ha ganado el Ejército del Bien! Enhorabuena.';
-    gamerScore.innerHTML = 1;
+    gamerScore.innerHTML = gamer;
   }
   if (optionUser === force) {
     result.innerHTML = 'Empate.';
   }
   if (optionUser < force) {
     result.innerHTML = 'Ha ganado el Ejército del Mal! Vuelve a Intentarlo.';
-    computerScore.innerHTML = 1;
+    computerScore.innerHTML = computer;
   }
 }
+
+/*
+Intento hacer lo de la puntuación acumulada hasta 10 pero tiene que ser fuera de bucle porque siempre coge el mismo valor
+
+let gamer = 1;
+let computer = 1;
+
+for (let i = 1; i <= 10; i++) {
+  if (optionUser > force) {
+    result.innerHTML = 'Ha ganado el Ejército del Bien! Enhorabuena.';
+    gamerScore.innerHTML = gamer++;
+  }
+  if (optionUser === force) {
+    result.innerHTML = 'Empate.';
+  }
+  if (optionUser < force) {
+    result.innerHTML = 'Ha ganado el Ejército del Mal! Vuelve a Intentarlo.';
+    computer++;
+  }
+  if (i === 10) {
+    btn.innerHTML = 'Reiniciar el juego';
+  }
+}
+*/
 
 function handleClick(event) {
   event.preventDefault();
