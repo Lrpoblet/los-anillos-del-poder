@@ -42,9 +42,23 @@ console.log(race);
 
 //batalla
 
+function battle() {
+  const optionUser = select.value;
+
+  if (optionUser > force) {
+    result.innerHTML = 'Ha ganado el Ejército del Bien! Enhorabuena.';
+  }
+  if (optionUser === force) {
+    result.innerHTML = 'Empate.';
+  }
+  if (optionUser < force) {
+    result.innerHTML = 'Ha ganado el Ejército del Mal! Vuelve a Intentarlo.';
+  }
+}
+
 function handleClick(event) {
   event.preventDefault();
-  console.log('click');
+  battle();
 }
 
 btn.addEventListener('click', handleClick);
