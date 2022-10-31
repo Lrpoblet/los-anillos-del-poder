@@ -4,6 +4,9 @@ const select = document.querySelector('.js_select');
 const btn = document.querySelector('.js_btn');
 const result = document.querySelector('.js_result');
 
+const gamerScore = document.querySelector('.js_gamerScore');
+const computerScore = document.querySelector('.js_computerScore');
+
 let random = '';
 let force = '';
 let race = '';
@@ -47,12 +50,14 @@ function battle() {
 
   if (optionUser > force) {
     result.innerHTML = 'Ha ganado el Ejército del Bien! Enhorabuena.';
+    gamerScore.innerHTML = 1;
   }
   if (optionUser === force) {
     result.innerHTML = 'Empate.';
   }
   if (optionUser < force) {
     result.innerHTML = 'Ha ganado el Ejército del Mal! Vuelve a Intentarlo.';
+    computerScore.innerHTML = 1;
   }
 }
 
