@@ -1,1 +1,50 @@
 'use strict';
+
+const select = document.querySelector('.js_select');
+const btn = document.querySelector('.js_btn');
+const result = document.querySelector('.js_result');
+
+//asignación del oponente
+
+function getRandomNumber(max) {
+  return Math.ceil(Math.random() * max);
+}
+
+const random = getRandomNumber(5);
+
+let force = '';
+let race = '';
+
+if (random === 1) {
+  force = 2;
+  race = 'Sureños malos con fuerza (2)';
+}
+if (random === 2) {
+  force = 2;
+  race = 'Orcos con fuerza (2)';
+}
+if (random === 3) {
+  force = 2;
+  race = 'Goblins con fuerza (2)';
+}
+if (random === 4) {
+  force = 3;
+  race = 'Huargos con fuerza (3)';
+}
+if (random === 5) {
+  force = 5;
+  race = 'Trolls con fuerza (5)';
+}
+
+console.log('número random ' + random);
+console.log('fuerza ' + force);
+console.log(race);
+
+//batalla
+
+function handleClick(event) {
+  event.preventDefault();
+  console.log('click');
+}
+
+btn.addEventListener('click', handleClick);
