@@ -102,9 +102,9 @@ function defaultMsj() {
 }
 
 function resetScore() {
-  let gamer = 0;
-  let computer = 0;
-  let moves = 0;
+  gamer = 0;
+  computer = 0;
+  moves = 0;
   gamerScore.innerHTML = gamer;
   computerScore.innerHTML = computer;
 }
