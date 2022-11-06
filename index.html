@@ -6,36 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="http://beta.adalab.es/resources/stylesheets/all.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/main.css" />
     <title>Los anillos del poder</title>
 </head>
 
 <body>
-    <h2>Juego</h2>
-    <h1>Los anillos del poder </h1>
-    <p>La Tierra Media está en guerra! En ella lucharán razas leales a Sauron contra otras bondadosas que no
-        quieren que el mal reine sobre sus tierras.</p>
-    <p>Eres un jugador del ejercito del bien, no olvides tu misión de ganar la batalla</p>
-    <form action="">
-        <select name="" id="" class="js_select">
-            <option selected="true" disabled="disabled" class="js_defaultOption">Selecciona la raza con la que vas a
-                jugar
-            </option>
-            <option value="1">Pelosos con fuerza (1)</option>
-            <option value="2">Sureños buenos con fuerza (2)</option>
-            <option value="3">Enanos con fuerza (3)</option>
-            <option value="4">Númenóreanos con fuerza (4)</option>
-            <option value="5">Elfos con fuerza (5)</option>
-        </select>
-        <button class="js_btn">Batalla</button>
-        <button class="js_btn-2 hidden">Reiniciar el juego</button>
-    </form>
-    <p class="js_result">¡Comienza la batalla!</p>
-    <p>Puntuaciones</p>
-    <ul>
-        <li>Jugador: <span class="js_gamerScore"></span></li>
-        <li>Computadora: <span class="js_computerScore"></span></li>
-    </ul>
+    <header class="header">
+        <h2 class="title title-1">Juego</h2>
+    </header>
+    <main class="main">
+        <h1 class="title title-2">Los anillos del poder </h1>
+        <p class="main-intro">La Tierra Media está en guerra! En ella lucharán razas leales a Sauron contra otras
+            bondadosas que no
+            quieren que el mal reine sobre sus tierras.</p>
+        <p class="main-choose">Eres un jugador del ejercito del bien, no olvides tu misión de ganar la batalla.</p>
+        <form action="">
+            <select name="" id="" class="js_select select">
+                <option selected="true" disabled="disabled" class="js_defaultOption">Selecciona la raza con la que vas a
+                    jugar
+                </option>
+                <option value="1">Pelosos con fuerza (1)</option>
+                <option value="2">Sureños buenos con fuerza (2)</option>
+                <option value="3">Enanos con fuerza (3)</option>
+                <option value="4">Númenóreanos con fuerza (4)</option>
+                <option value="5">Elfos con fuerza (5)</option>
+            </select>
+            <button class="js_btn button">Batalla</button>
+            <button class="js_btn-2 hidden button">Reiniciar el juego</button>
+        </form>
+        <p class="js_result result">¡Comienza la batalla!</p>
+        <section class="score">
+            <p class="title">Puntuaciones</p>
+            <ul class="score-points">
+                <li>Jugador: <span class="js_gamerScore"></span></li>
+                <li>Computadora: <span class="js_computerScore"></span></li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer"><small class="copy">&copy;2022 <a class="copy" href="https://github.com/Lrpoblet"
+                target="_blank">Lara R.
+                Poblet</a></small></footer>
     <script src="./js/main.js"></script>
 </body>
 
