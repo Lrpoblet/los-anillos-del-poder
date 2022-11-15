@@ -85,7 +85,6 @@ function getUserOption() {
 }
 
 function battle(optionUser, optionComputer) {
-  debugger;
   if (optionUser > optionComputer) {
     result.innerHTML = 'Minipunto para el Ejército del Bien';
     gamer++;
