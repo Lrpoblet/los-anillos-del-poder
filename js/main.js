@@ -1,96 +1,138 @@
 'use strict';
 
+////////// VARIABLES
+
 const select = document.querySelector('.js_select');
+const defaultOption = document.querySelector('.js_defaultOption');
 const btn = document.querySelector('.js_btn');
+const btn2 = document.querySelector('.js_btn-2');
 const result = document.querySelector('.js_result');
 
 const gamerScore = document.querySelector('.js_gamerScore');
 const computerScore = document.querySelector('.js_computerScore');
 
-let random = '';
-let force = '';
-let race = '';
+let gamer = 0;
+let computer = 0;
+let moves = 0;
 
-//asignación del oponente
+////////// FUNCIONES BATALLA
 
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
 
 function getRandomOpponent() {
-  random = getRandomNumber(5);
+  let random = getRandomNumber(5);
+  let race = '';
+  let force = 0;
+
   if (random === 1) {
     force = 2;
     race = 'Sureños malos con fuerza (2)';
-  }
-  if (random === 2) {
+    console.log(race);
+    return force;
+  } else if (random === 2) {
     force = 2;
     race = 'Orcos con fuerza (2)';
-  }
-  if (random === 3) {
+    console.log(race);
+    return force;
+  } else if (random === 3) {
     force = 2;
     race = 'Goblins con fuerza (2)';
-  }
-  if (random === 4) {
+    console.log(race);
+    return force;
+  } else if (random === 4) {
     force = 3;
     race = 'Huargos con fuerza (3)';
-  }
-  if (random === 5) {
+    console.log(race);
+    return force;
+  } else if (random === 5) {
     force = 5;
     race = 'Trolls con fuerza (5)';
+    console.log(race);
+    return force;
   }
-
-  console.log(race);
 }
 
-//batalla
+function getUserOption() {
+  return parseInt(select.value);
+}
 
-function battle() {
-  const optionUser = parseInt(select.value);
-  let gamer = 1;
-  let computer = 1;
-
-  if (optionUser > force) {
-    result.innerHTML = 'Ha ganado el Ejército del Bien! Enhorabuena.';
+function battle(optionUser, optionComputer) {
+  if (optionUser > optionComputer) {
+    result.innerHTML = 'Minipunto para el Ejército del Bien';
+    gamer++;
     gamerScore.innerHTML = gamer;
   }
-  if (optionUser === force) {
+  if (optionUser === optionComputer) {
     result.innerHTML = 'Empate.';
   }
-  if (optionUser < force) {
-    result.innerHTML = 'Ha ganado el Ejército del Mal! Vuelve a Intentarlo.';
+  if (optionUser < optionComputer) {
+    result.innerHTML = 'Minipunto para el Ejército del Mal.';
+    computer++;
     computerScore.innerHTML = computer;
   }
 }
 
-/*
-Intento hacer lo de la puntuación acumulada hasta 10 pero tiene que ser fuera de bucle porque siempre coge el mismo valor
-
-let gamer = 1;
-let computer = 1;
-
-for (let i = 1; i <= 10; i++) {
-  if (optionUser > force) {
-    result.innerHTML = 'Ha ganado el Ejército del Bien! Enhorabuena.';
-    gamerScore.innerHTML = gamer++;
-  }
-  if (optionUser === force) {
-    result.innerHTML = 'Empate.';
-  }
-  if (optionUser < force) {
-    result.innerHTML = 'Ha ganado el Ejército del Mal! Vuelve a Intentarlo.';
-    computer++;
-  }
-  if (i === 10) {
-    btn.innerHTML = 'Reiniciar el juego';
+function gameOver() {
+  moves++;
+  if (moves === 10) {
+    btn.classList.add('hidden');
+    btn2.classList.remove('hidden');
+    if (gamer > computer) {
+      result.innerHTML =
+        'Has ganado la guerra y evitado que el mal reine! Enhorabuena :)';
+    } else if (computer > gamer) {
+      result.innerHTML = 'Has perdido la guerra y el mal ha reinado :(';
+    } else {
+      result.innerHTML =
+        'Empate, la Tierra Media sigue en guerra, inténtalo de nuevo';
+    }
   }
 }
-*/
+
+// FUNCIONES RESET
+
+function selectDefault() {
+  defaultOption.selected = true;
+}
+
+function defaultMsj() {
+  result.innerHTML = '¡Comienza la batalla!';
+}
+
+function resetScore() {
+  gamer = 0;
+  computer = 0;
+  moves = 0;
+  gamerScore.innerHTML = gamer;
+  computerScore.innerHTML = computer;
+}
+
+function resetBtn() {
+  btn.classList.remove('hidden');
+  btn2.classList.add('hidden');
+}
+
+/////////////HANDLES FUNCTIONS
 
 function handleClick(event) {
   event.preventDefault();
-  getRandomOpponent();
-  battle();
+  const optionUser = getUserOption();
+  const optionComputer = getRandomOpponent();
+  battle(optionUser, optionComputer);
+  gameOver();
 }
 
+function handleReset(event) {
+  event.preventDefault();
+  selectDefault();
+  defaultMsj();
+  resetScore();
+  resetBtn();
+}
+
+/////////////EVENTS
+
 btn.addEventListener('click', handleClick);
+btn2.addEventListener('click', handleReset);
