@@ -11,6 +11,11 @@ const result = document.querySelector('.js_result');
 const gamerScore = document.querySelector('.js_gamerScore');
 const computerScore = document.querySelector('.js_computerScore');
 
+const imageComputer = document.querySelector('.img-computer');
+const imageUser = document.querySelector('.img-gamer');
+let computerSelection = document.querySelector('.js_computer-selection');
+let userSelection = document.querySelector('.js_gamer-selection');
+
 let gamer = 0;
 let computer = 0;
 let moves = 0;
@@ -28,33 +33,54 @@ function getRandomOpponent() {
 
   if (random === 1) {
     force = 2;
-    race = 'Sureños malos con fuerza (2)';
-    console.log(race);
+    race = 'Sureños malos';
+    computerSelection.innerHTML = race;
+    imageComputer.src = './img/undefined.jfif';
     return force;
   } else if (random === 2) {
     force = 2;
-    race = 'Orcos con fuerza (2)';
-    console.log(race);
+    race = 'Orcos';
+    computerSelection.innerHTML = race;
+    imageComputer.src = './img/orco.webp';
     return force;
   } else if (random === 3) {
     force = 2;
-    race = 'Goblins con fuerza (2)';
-    console.log(race);
+    race = 'Goblins';
+    computerSelection.innerHTML = race;
+    imageComputer.src = './img/goblins.jpeg';
     return force;
   } else if (random === 4) {
     force = 3;
-    race = 'Huargos con fuerza (3)';
-    console.log(race);
+    race = 'Huargos';
+    computerSelection.innerHTML = race;
+    imageComputer.src = './img/huargos.webp';
     return force;
-  } else if (random === 5) {
+  } else {
     force = 5;
-    race = 'Trolls con fuerza (5)';
-    console.log(race);
+    race = 'Trolls';
+    computerSelection.innerHTML = race;
+    imageComputer.src = './img/trolls.webp';
     return force;
   }
 }
 
 function getUserOption() {
+  if (select.value === '1') {
+    userSelection.innerHTML = 'Pelosos';
+    imageUser.src = './img/peloso.webp';
+  } else if (select.value === '2') {
+    userSelection.innerHTML = 'Sureños buenos';
+    imageUser.src = './img/undefined.jfif';
+  } else if (select.value === '3') {
+    userSelection.innerHTML = 'Enanos';
+    imageUser.src = './img/enano.webp';
+  } else if (select.value === '4') {
+    userSelection.innerHTML = 'Númenóreanos';
+    imageUser.src = './img/undefined.jfif';
+  } else {
+    userSelection.innerHTML = 'Elfos';
+    imageUser.src = './img/elfos.webp';
+  }
   return parseInt(select.value);
 }
 
@@ -63,14 +89,12 @@ function battle(optionUser, optionComputer) {
     result.innerHTML = 'Minipunto para el Ejército del Bien';
     gamer++;
     gamerScore.innerHTML = gamer;
-  }
-  if (optionUser === optionComputer) {
-    result.innerHTML = 'Empate.';
-  }
-  if (optionUser < optionComputer) {
+  } else if (optionUser < optionComputer) {
     result.innerHTML = 'Minipunto para el Ejército del Mal.';
     computer++;
     computerScore.innerHTML = computer;
+  } else {
+    result.innerHTML = 'Empate.';
   }
 }
 
@@ -80,13 +104,19 @@ function gameOver() {
     btn.classList.add('hidden');
     btn2.classList.remove('hidden');
     if (gamer > computer) {
+      result.style.color = 'white';
+      result.style.backgroundColor = 'green';
       result.innerHTML =
         'Has ganado la guerra y evitado que el mal reine! Enhorabuena :)';
     } else if (computer > gamer) {
       result.innerHTML = 'Has perdido la guerra y el mal ha reinado :(';
+      result.style.color = 'white';
+      result.style.backgroundColor = 'red';
     } else {
       result.innerHTML =
         'Empate, la Tierra Media sigue en guerra, inténtalo de nuevo';
+      result.style.color = 'white';
+      result.style.backgroundColor = 'orange';
     }
   }
 }
@@ -97,8 +127,17 @@ function selectDefault() {
   defaultOption.selected = true;
 }
 
+function resetImg() {
+  imageUser.src = './img/random.jfif';
+  imageComputer.src = './img/random.jfif';
+}
+
 function defaultMsj() {
   result.innerHTML = '¡Comienza la batalla!';
+  userSelection.innerHTML = '';
+  computerSelection.innerHTML = '';
+  result.style.color = 'black';
+  result.style.backgroundColor = 'bisque';
 }
 
 function resetScore() {
@@ -130,6 +169,7 @@ function handleReset(event) {
   defaultMsj();
   resetScore();
   resetBtn();
+  resetImg();
 }
 
 /////////////EVENTS
