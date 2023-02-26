@@ -3,7 +3,7 @@
 ////////// VARIABLES
 
 const select = document.querySelector('.js_select');
-const defaultOption = document.querySelector('.js_defaultOption');
+// const defaultOption = document.querySelector('.js_defaultOption');
 const btn = document.querySelector('.js_btn');
 const btn2 = document.querySelector('.js_btn-2');
 const result = document.querySelector('.js_result');
@@ -123,9 +123,9 @@ function gameOver() {
 
 // FUNCIONES RESET
 
-function selectDefault() {
-  defaultOption.selected = true;
-}
+// function selectDefault() {
+//   defaultOption.selected = true;
+// }
 
 function resetImg() {
   imageUser.src = './img/random.jfif';
@@ -165,7 +165,7 @@ function handleClick(event) {
 
 function handleReset(event) {
   event.preventDefault();
-  selectDefault();
+  // selectDefault();
   defaultMsj();
   resetScore();
   resetBtn();
