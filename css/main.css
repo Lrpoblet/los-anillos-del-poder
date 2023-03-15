@@ -1,11 +1,13 @@
 body {
   background-image: url('../img/wallpaper.jpeg');
-  background-size: cover no-repeat;
+  background-size: cover;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   justify-content: space-around;
+  margin-top: 20px;
 }
 
 .title {
@@ -30,7 +32,6 @@ body {
 .main {
   width: 75%;
   text-align: center;
-  height: 85vh;
 }
 
 .main-intro {
@@ -84,10 +85,8 @@ body {
 
 .footer {
   opacity: 0.7;
-  align-self: flex-start;
-  padding-left: 10px;
-  position: fixed;
   bottom: 0;
+  position: relative;
 }
 
 .copy {
@@ -115,6 +114,13 @@ body {
   font-weight: bold;
 }
 
-.hidden {
+.hidden,
+.hidden2 {
   display: none;
+}
+
+@media all and (min-width: 768px) {
+  .hidden2 {
+    display: block;
+  }
 }
